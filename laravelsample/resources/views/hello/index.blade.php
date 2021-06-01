@@ -9,7 +9,15 @@
 </head>
 
 <body>
-  <p>{{$msg}}</p>
+  <h1>タイトル</h1>
+  <table>
+    @foreach ($data as $item)
+      <tr>
+        <th>{{$item['name']}}</th>
+        <td>{{$item['email']}}</td>
+      </tr>
+    @endforeach
+  </table>
 </body>
 
 </html>

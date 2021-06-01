@@ -26,9 +26,8 @@ class HelloServiceProvider extends ServiceProvider
     {
         View::composer(
             'hello.index',
-            function($view){
-                $view->with('msg','test');
-            }
+        'App\Http\Composers\HelloComposer'
+            
         );
         
     }
