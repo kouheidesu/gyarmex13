@@ -9,15 +9,28 @@
 </head>
 
 <body>
-  <h1>タイトル</h1>
-  <table>
-    @foreach ($data as $item)
+  <p>{{$txt}}</p>
+  @if (count($errors) > 0)
+    <p>入力に問題があります</p>
+  @endif
+  <form action="/hello" method="post">
+    <table>
+      @csrf
+      @if($errors->has('txt'))
+        <tr>
+          <th>ERROR</th>
+          <td>{{$errors->first('txt')}}</td>
+        </tr>
+      @enderror
       <tr>
-        <th>{{$item['name']}}</th>
-        <td>{{$item['email']}}</td>
+        <th>txt:</th>
+        <td>
+          <input type="text" name="txt" value="{{ old('txt') }}">
+        </td>
       </tr>
-    @endforeach
-  </table>
+    </table>
+    <input type="submit" value="送信">
+  </form>
 </body>
 
 </html>
