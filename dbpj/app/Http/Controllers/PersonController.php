@@ -27,4 +27,11 @@ class PersonController extends Controller
         ];
         return view('find', $param);
     }
+    public function bind(Person $person)
+{
+    $data = [
+        'item'=>$person,
+    ];
+    return view('person.binds', $data);
+}
 }
