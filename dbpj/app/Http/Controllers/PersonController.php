@@ -2,57 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Person;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class PersonController extends Controller
 {
     public function index(Request $request)
     {
-        $items = DB::table('people')->orderBy('age', 'asc')->get();
+        $items = Person::all();
         return view('index', ['items' => $items]);
     }
-    public function show(Request $request)
+    public function find(Request $request)
     {
-        $page = $request->page;
-        $items = DB::table('people')->offset($page * 3)->limit(3)->get();
-        return view('show', ['items' => $items]);
+        return view('find', ['input' => '']);
     }
-    public function add(Request $request)
+    public function search(Request $request)
     {
-        return view('add');
-    }
-    public function create(Request $request)
-    {
+        $min = $request->input * 1;
+        $max = $min + 10;
+        $item = Person::ageGreaterThan($min)->ageLessThan($max)->first();
         $param = [
-            'name' => $request->name,
-            'age' => $request->age
+            'input' => $request->input,
+            'item' => $item
         ];
-        DB::table('people')->insert($param);
-        return redirect('/h');
-    }
-    public function edit(Request $request)
-    {
-        $item = DB::table('people')->where('id', $request->id)->first();
-        return view('edit', ['form' => $item]);
-    }
-    public function update(Request $request)
-    {
-        $param = [
-            'name' => $request->name,
-            'age' => $request->age
-        ];
-        DB::table('people')->where('id', $request->id)->update($param);
-        return redirect('/');
-    }
-    public function delete(Request $request)
-    {
-        $item=DB::table('people')->where('id',$request->id)->first();
-        return view('delete',['form'=>$item]);
-    }
-    public function remove(Request $request)
-    {
-        DB::table('people')->where('id',$request->id)->delete();
-        return redirect('/');
+        return view('find', $param);
     }
 }

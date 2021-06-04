@@ -16,23 +16,13 @@
 
 @section('content')
 <table>
-  <tr>
-    <th>id</th>
-    <th>name</th>
-    <th>age</th>
-  </tr>
-  @foreach ($items as $item)
-  <tr>
-    <td>
-      {{$item->id}}
-    </td>
-    <td>
-      {{$item->name}}
-    </td>
-    <td>
-      {{$item->age}}
-    </td>
-  </tr>
-  @endforeach
-</table>
+<tr>
+<th>Data</th>
+</tr>
+@foreach($items as $item)
+<tr>
+<td>
+{{$item->getData()}}</td>
+</tr>
+@endforeach</table>
 @endsection
