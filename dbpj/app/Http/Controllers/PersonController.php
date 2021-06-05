@@ -27,11 +27,31 @@ class PersonController extends Controller
         ];
         return view('find', $param);
     }
-    public function bind(Person $person)
-{
-    $data = [
-        'item'=>$person,
-    ];
-    return view('person.binds', $data);
-}
-}
+    public function add(Request $request)
+    {
+        return view('add');
+    }
+    public function create(Request $request)
+    {
+        $this->validate($request, Person::$rules);
+        $person = new Person;
+        $form = $request->all();
+        unset($form['_token_']);
+        $person->fill($form)->save();
+        return redirect('/');
+    }
+    public function edit(Request $request)
+    {
+        $person = Person::find($request->id);
+        return view('edit',['form'=>$person]);
+    }
+    public function update(Request $request)
+    {
+        $this->validate($request, Person::$rules);
+        $person = Person::find($request->id);
+        $form = $request->all();
+        unset($form['_token_']);
+        $person->fill($form)->save();
+          return redirect('/');
+      }
+  }

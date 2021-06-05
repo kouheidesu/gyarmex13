@@ -1,6 +1,12 @@
-<?php
+/<?php
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PersonController;
 
-Route::get('/person/{person}', [PersonController::class, 'bind']);
+Route::get('/', [PersonController::class, 'index']);
+Route::get('/find', [PersonController::class, 'find']);
+Route::post('/find', [PersonController::class, 'search']);
+Route::get('/add', [PersonController::class, 'add']);
+Route::post('/add', [PersonController::class, 'create']);
+Route::get('/edit', [PersonController::class, 'edit']);
+Route::post('/edit', [PersonController::class, 'update']);

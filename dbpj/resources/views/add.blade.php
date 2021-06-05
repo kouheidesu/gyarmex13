@@ -20,6 +20,14 @@
 
 
 @section('content')
+@if(count($errors)>0)
+<ul>
+@foreach($errors->all()as $error)
+<li>
+{{$error}}</li>
+@endforeach</ul>
+@endif
+
 <form action="/add" method="POST">
   <table>
     @csrf
@@ -28,7 +36,7 @@
         name
       </th>
       <td>
-        <input type="text" name="name">
+        <input type="text" name="name" value="{{old('name')}}">
       </td>
     </tr>
     <tr>
@@ -36,7 +44,7 @@
         age
       </th>
       <td>
-        <input type="text" name="age">
+        <input type="text" name="age" value="{{old('age')}}">
       </td>
     </tr>
   </table>
