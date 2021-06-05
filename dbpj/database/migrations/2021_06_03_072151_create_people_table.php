@@ -21,4 +21,9 @@ class CreatePeopleTable extends Migration
              $table->timestamp('updated_at')->useCurrent()->nullable();
            });
     }
+
+    public function down()
+    {
+      Schema::dropIfExists('people');
+    }
 }
