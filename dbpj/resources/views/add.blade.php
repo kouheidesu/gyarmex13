@@ -20,15 +20,16 @@
 
 
 @section('content')
-@if(count($errors)>0)
+@if (count($errors) > 0)
 <ul>
-@foreach($errors->all()as $error)
-<li>
-{{$error}}</li>
-@endforeach</ul>
+  @foreach ($errors->all() as $error)
+  <li>
+    {{$error}}
+  </li>
+  @endforeach
+</ul>
 @endif
-
-<form action="/add" method="POST">
+<form action="/add" method="post">
   <table>
     @csrf
     <tr>
