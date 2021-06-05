@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class PeopleTableSeeder extends Seeder
 {
-    @return
+    
 
     public function run()
     {
