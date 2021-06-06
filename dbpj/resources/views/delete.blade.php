@@ -23,29 +23,19 @@
 <form action="/delete" method="POST">
   <table>
     @csrf
+    <input type="hidden" name="id" value="{{$form->id}}">
     <tr>
-      <th>
-        id
-      </th>
-      <td>
-        <input type="text" name="id" value="{{$form->id}}">
-      </td>
+    <th>
+    name</th>
+    <td>
+    {{$form->name}}
+    </td>
     </tr>
     <tr>
-      <th>
-        name
-      </th>
-      <td>
-        <input type="text" name="name" value="{{$form->name}}">
-      </td>
-    </tr>
-    <tr>
-      <th>
-        age
-      </th>
-      <td>
-        <input type="text" name="age" value="{{$form->age}}">
-      </td>
+    <th>
+    age</th>
+    <td>
+    {{$form->age}}</td>
     </tr>
   </table>
   <button>送信</button>
