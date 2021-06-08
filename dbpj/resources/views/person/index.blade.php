@@ -11,32 +11,21 @@
       text-align: center;
     }
 </style>
-@section('title', 'person.index.blade.php')
+@section('title', 'index.blade.php')
 
 
 @section('content')
 <table>
   <tr>
-    <th>Person</th>
-    <th>Board</th>
+    <th>Name</th>
+    <th>Age</th>
   </tr>
   @foreach ($items as $item)
   <tr>
-    <td>
-      {{$item->getData()}}
-    </td>
-    <td>
-      @if ($item->boards != null)
-      <table width="100%">
-        @foreach ($item->boards as $obj)
-          <tr>
-            <td>{{ $obj->getData() }}</td>
-          </tr>
-        @endforeach
-      </table>
-      @endif
-    </td>
+    <td>{{ $item->name }}</td>
+    <td>{{ $item->age }}</td>
   </tr>
   @endforeach
 </table>
+{{ $items->links() }}
 @endsection

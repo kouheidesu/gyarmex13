@@ -11,21 +11,13 @@
       text-align: center;
     }
 </style>
-@section('title', 'index.blade.php')
-
+@section('title', 'session.blade.php')
 
 @section('content')
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Age</th>
-  </tr>
-  @foreach ($items as $item)
-  <tr>
-    <td>{{ $item->name }}</td>
-    <td>{{ $item->age }}</td>
-  </tr>
-  @endforeach
-</table>
-{{ $items->links() }}
+<p>{{ $session_data }}</p>
+  <form action="/session" method="post">
+    @csrf
+    <input type="text" name="input">
+    <button>送信</button>
+  </form>
 @endsection
