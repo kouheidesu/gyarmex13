@@ -9,3 +9,6 @@ Route::get('/board/add', [BoardController::class, 'add']);
 Route::post('/board/add', [BoardController::class, 
 'create']);
 Route::get('/person',[PersonController::class,'index']);
+Route::get('/', [PersonController::class, 'index']);
+Route::get('/add', [PersonController::class, 'add']);
+Route::post('/add', [PersonController::class, 'create']);
