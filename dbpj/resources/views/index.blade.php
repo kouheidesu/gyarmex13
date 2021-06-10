@@ -30,5 +30,5 @@
   </tr>
   @endforeach
 </table>
-{{ $items->appends(['sort'=>$sort])->links() }}
 @endsection
+
