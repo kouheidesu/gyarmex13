@@ -1,0 +1,1 @@
+copy nul test.bat

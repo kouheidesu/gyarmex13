@@ -23,9 +23,11 @@ class Kernel extends ConsoleKernel
      * @return void
      */
     protected function schedule(Schedule $schedule)
-    {
-        // $schedule->command('inspire')->hourly();
-    }
+{
+     $path=storage_path('app/logs/test.log');
+     $schedule->command('route:list')->everyMinute()->appendOutpuTo($path);
+     $schedule->call(new \App\Test($schedule))->everyMinute();
+}
 
     /**
      * Register the commands for the application.

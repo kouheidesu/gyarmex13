@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Person;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class PersonFactory extends Factory
 {
@@ -13,16 +14,11 @@ class PersonFactory extends Factory
      * @var string
      */
     protected $model = Person::class;
-    /**
-     * Define the model's default state.
-     *
-     * @return array
-     */
     public function definition()
     {
         return [
             'name' => $this->faker->name,
-            'age' => random_int(1,99),
+            'age' => $this->faker->numberBetween(1,100),
         ];
     }
 }

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\BoardController;
 use App\Http\Controllers\SessionController;
+use App\Models\Person;
 
 
 Route::get('/', [PersonController::class, 'index']);
@@ -32,4 +33,12 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+Route::get('/softdelete', function () {
+    Person::find(1)->delete();
+});
+
+Route::get('softdelete/get', function() {
+    $person = Person::onlyTrashed()->get();
+    dd($person);
+});
 require __DIR__.'/auth.php';
